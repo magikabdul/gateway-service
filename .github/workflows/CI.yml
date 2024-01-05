@@ -32,11 +32,11 @@ jobs:
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           status: ${{ job.status }}
-          title: "CI - success"
+          title: "CI gateway-service - success"
       - name: Discord notification -> non-success
         uses: sarisia/actions-status-discord@v1
         if: ${{ !success() }}
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           status: ${{ job.status }}
-          title: "CI - failure"
+          title: "CI gateway-service - failure"
