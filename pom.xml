@@ -33,13 +33,13 @@
 
 	<dependencies>
 		<!--  internal dependencies versions-->
-		<dependency>
-			<groupId>cloud.cholewa</groupId>
-			<artifactId>eaton-utility</artifactId>
-			<version>${eaton-utility.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>cloud.cholewa</groupId>
+            <artifactId>eaton-utility</artifactId>
+            <version>${eaton-utility.version}</version>
+        </dependency>
 
-		<dependency>
+        <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
@@ -78,17 +78,17 @@
 	</dependencies>
 
 	<repositories>
-		<repository>
-			<id>github-prv</id>
-			<url>https://maven.pkg.github.com/magikabdul/*</url>
-		</repository>
-		<repository>
-			<id>github-org-smart-home</id>
-			<url>https://maven.pkg.github.com/smart-home-automation-system/*</url>
-		</repository>
-	</repositories>
+        <repository>
+            <id>github-prv</id>
+            <url>https://maven.pkg.github.com/magikabdul/*</url>
+        </repository>
+        <repository>
+            <id>github-org-smart-home</id>
+            <url>https://maven.pkg.github.com/smart-home-automation-system/*</url>
+        </repository>
+    </repositories>
 
-	<build>
+    <build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
