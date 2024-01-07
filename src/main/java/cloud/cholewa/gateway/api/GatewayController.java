@@ -3,6 +3,7 @@ package cloud.cholewa.gateway.api;
 import cloud.cholewa.gateway.service.GatewayService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
@@ -15,7 +16,7 @@ public class GatewayController {
     private final GatewayService gatewayService;
 
     @GetMapping
-    Mono<Void> incomingGet(
+    Mono<ResponseEntity<String>> incomingGet(
             @RequestParam(name = "message") final String message,
             @RequestBody final String body
     ) {

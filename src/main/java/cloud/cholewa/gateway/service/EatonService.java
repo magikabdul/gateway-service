@@ -1,8 +1,9 @@
 package cloud.cholewa.gateway.service;
 
+import org.springframework.http.ResponseEntity;
 import reactor.core.publisher.Mono;
 
 interface EatonService {
 
-    Mono<Void> parse(String message);
+    Mono<ResponseEntity<String>> parse(String message);
 }
