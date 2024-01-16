@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: maven-settings-xml-action
-        uses: whelk-io/maven-settings-xml-action@v20
+        uses: whelk-io/maven-settings-xml-action@v21
         with:
           servers: >
             [
