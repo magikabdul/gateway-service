@@ -33,6 +33,23 @@ jobs:
               }
             ]
 
+      - name: maven-settings-xml-action
+        uses: whelk-io/maven-settings-xml-action@v20
+        with:
+          servers: >
+            [
+              {
+                "id": "github-prv",
+                "username": "${{secrets.GH_PRV_USERNAME}}",
+                "password": "${{secrets.GH_PRV_PASSWORD}}"
+              },
+              {
+                "id": "github-org-smart-home",
+                "username": "${{secrets.GH_PRV_USERNAME}}",
+                "password": "${{secrets.GH_PRV_PASSWORD}}"
+              }
+            ]
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
