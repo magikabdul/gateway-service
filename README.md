@@ -6,7 +6,7 @@ General purpose of this service its gateway to AMX control system.
 
 ![GitHub top language](https://img.shields.io/github/languages/top/smart-home-automation-system/gateway-service?style=plastic)
 ![Java](https://img.shields.io/badge/java-17-yellow?style=plastic)
-![SpringBoot](https://img.shields.io/badge/SpringBoot-3.2.1-blue?style=plastic)
+![SpringBoot](https://img.shields.io/badge/SpringBoot-3.3.2-blue?style=plastic)
 
 ![GitHub issues](https://img.shields.io/github/issues/smart-home-automation-system/gateway-service?style=plastic)
 ![GitHub contributors](https://img.shields.io/github/contributors/smart-home-automation-system/gateway-service?style=plastic)
