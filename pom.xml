@@ -19,9 +19,10 @@
 
 	<properties>
 		<java.version>17</java.version>
+		<logbook.version>3.9.0</logbook.version>
 
 		<!--  internal dependencies versions-->
-		<eaton-utility.version>0.0.1</eaton-utility.version>
+		<eaton-utility.version>0.0.2</eaton-utility.version>
 
 		<!--  plugins versions-->
 		<maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
@@ -45,6 +46,18 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.zalando</groupId>
+			<artifactId>logbook-spring-boot-webflux-autoconfigure</artifactId>
+			<version>${logbook.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apiguardian</groupId>
+					<artifactId>apiguardian-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
