@@ -10,6 +10,14 @@ spring:
 server:
   port: 6200
 
+logbook:
+  format:
+    style: http
+
+logging:
+  level:
+    org.zalando.logbook: trace
+
 ---
 
 spring:
