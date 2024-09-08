@@ -1,6 +1,8 @@
 # gateway-service
 
 [![CI](https://github.com/smart-home-automation-system/gateway-service/actions/workflows/CI.yml/badge.svg)](https://github.com/smart-home-automation-system/gateway-service/actions/workflows/CI.yml)
+![GitHub Release Date - Published_At](https://img.shields.io/github/release-date/smart-home-automation-system/gateway-service?style=plastic)
+![GitHub Release](https://img.shields.io/github/v/release/smart-home-automation-system/gateway-service?style=plastic)
 
 General purpose of this service its gateway to AMX control system.
 
