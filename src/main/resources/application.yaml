@@ -10,6 +10,12 @@ spring:
 server:
   port: 6200
 
+internal:
+  service:
+    configuration:
+      host: database-service
+      port: 6200
+
 logbook:
   format:
     style: http
@@ -30,3 +36,9 @@ server:
 management:
   server:
     port: 8001
+
+internal:
+  service:
+    configuration:
+      host: 10.78.20.12
+      port: 80
