@@ -24,7 +24,7 @@
 		<!--  internal dependencies versions-->
 		<cholewa-commons.version>0.1.2</cholewa-commons.version>
 		<eaton-utility.version>0.0.3</eaton-utility.version>
-		<smart-home-sdk.version>0.0.3</smart-home-sdk.version>
+		<smart-home-sdk.version>0.0.1-SNAPSHOT</smart-home-sdk.version>
 
 		<!--  plugins versions-->
 		<maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
