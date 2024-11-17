@@ -5,7 +5,9 @@ import cloud.cholewa.eaton.utilities.MessageUtilities;
 import cloud.cholewa.eaton.utilities.MessageValidator;
 import cloud.cholewa.eaton.utilities.RoomControllerParser;
 import cloud.cholewa.gateway.device.client.DeviceConfigurationClient;
+import cloud.cholewa.gateway.heating.client.HeatingClient;
 import cloud.cholewa.gateway.model.EatonDeviceStatus;
+import cloud.cholewa.home.model.DeviceStatusUpdate;
 import cloud.cholewa.home.model.EatonGateway;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +23,7 @@ import java.util.Objects;
 public class GatewayService {
 
     private final DeviceConfigurationClient deviceConfigurationClient;
+    private final HeatingClient heatingClient;
 
     public Mono<ResponseEntity<Void>> parseEatonMessage(final String interfaceType, final String fullMessage) {
 
@@ -54,7 +57,13 @@ public class GatewayService {
                     eatonDeviceStatus.getTemperature()
                 )
             )
-            .map(eatonConfiguration -> ResponseEntity.ok().<Void>build());
+            .flatMap(eatonDeviceStatus -> heatingClient.sendDeviceStatus(
+                DeviceStatusUpdate.builder()
+                    .roomName(eatonDeviceStatus.getRoomName())
+                    .deviceType(eatonDeviceStatus.getDeviceType())
+                    .value(eatonDeviceStatus.getTemperature().toString())
+                    .build()
+            ));
     }
 
     private EatonGateway findEatonGateway(final String interfaceType) {

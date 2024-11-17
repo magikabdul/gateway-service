@@ -2,6 +2,7 @@ package cloud.cholewa.gateway.service;
 
 import cloud.cholewa.eaton.infrastructure.error.EatonException;
 import cloud.cholewa.gateway.device.client.DeviceConfigurationClient;
+import cloud.cholewa.gateway.heating.client.HeatingClient;
 import cloud.cholewa.gateway.infrastructure.error.ConfigurationCallException;
 import cloud.cholewa.home.model.DeviceType;
 import cloud.cholewa.home.model.EatonConfigurationResponse;
@@ -10,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
 import reactor.core.publisher.Mono;
@@ -21,12 +21,15 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class GatewayServiceTest {
 
     @Mock
     private DeviceConfigurationClient deviceConfigurationClient;
+    @Mock
+    private HeatingClient heatingClient;
     @InjectMocks
     private GatewayService sut;
 
@@ -50,7 +53,7 @@ class GatewayServiceTest {
 
     @Test
     void should_throw_exception_when_device_configuration_not_known() {
-        Mockito.when(deviceConfigurationClient.getDeviceConfiguration(any(), anyInt()))
+        when(deviceConfigurationClient.getDeviceConfiguration(any(), anyInt()))
             .thenThrow(ConfigurationCallException.class);
 
         sut.parseEatonMessage("blinds", "5A,C,C1,2C,62,3,0,1,58,0,0,43,5,A5")
@@ -62,7 +65,7 @@ class GatewayServiceTest {
 
     @Test
     void should_return_empty_response_for_valid_message_and_device_configuration_available() {
-        Mockito.when(deviceConfigurationClient.getDeviceConfiguration(any(), anyInt()))
+        when(deviceConfigurationClient.getDeviceConfiguration(any(), anyInt()))
             .thenReturn(Mono.just(
                 ResponseEntity.ok(EatonConfigurationResponse.builder()
                         .dataPoint(1)
@@ -71,9 +74,10 @@ class GatewayServiceTest {
                     .build())
             ));
 
+        when(heatingClient.sendDeviceStatus(any())).thenReturn(Mono.empty());
+
         sut.parseEatonMessage("blinds", "5A,C,C1,2C,62,3,0,1,58,0,0,43,5,A5")
             .as(StepVerifier::create)
-            .expectNext(ResponseEntity.ok().build())
             .verifyComplete();
 
         verify(deviceConfigurationClient, times(1)).getDeviceConfiguration(any(), anyInt());

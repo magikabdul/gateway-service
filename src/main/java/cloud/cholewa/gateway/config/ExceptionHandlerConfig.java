@@ -3,8 +3,10 @@ package cloud.cholewa.gateway.config;
 import cloud.cholewa.commons.error.GlobalErrorExceptionHandler;
 import cloud.cholewa.eaton.infrastructure.error.EatonParsingException;
 import cloud.cholewa.gateway.infrastructure.error.ConfigurationCallException;
+import cloud.cholewa.gateway.infrastructure.error.HeatingCallException;
 import cloud.cholewa.gateway.infrastructure.error.processor.ConfigurationCallExceptionProcessor;
 import cloud.cholewa.gateway.infrastructure.error.processor.EatonParsingExceptionProcessor;
+import cloud.cholewa.gateway.infrastructure.error.processor.HeatingCallExceptionProcessor;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.boot.web.reactive.error.ErrorAttributes;
 import org.springframework.context.ApplicationContext;
@@ -33,7 +35,8 @@ public class ExceptionHandlerConfig {
         globalErrorExceptionHandler.withCustomErrorProcessor(
             Map.ofEntries(
                 Map.entry(EatonParsingException.class, new EatonParsingExceptionProcessor()),
-                Map.entry(ConfigurationCallException.class, new ConfigurationCallExceptionProcessor())
+                Map.entry(ConfigurationCallException.class, new ConfigurationCallExceptionProcessor()),
+                Map.entry(HeatingCallException.class, new HeatingCallExceptionProcessor())
             )
         );
 

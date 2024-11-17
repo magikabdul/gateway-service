@@ -15,6 +15,9 @@ internal:
     configuration:
       host: database-service
       port: 6200
+    heating:
+      host: heating-service
+      port: 6200
 
 logbook:
   format:
@@ -42,3 +45,6 @@ internal:
     configuration:
       host: 10.78.20.12
       port: 80
+    heating:
+      host: localhost
+      port: 6002
